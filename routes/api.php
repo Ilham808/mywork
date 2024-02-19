@@ -24,6 +24,7 @@ Route::post('login', [\App\Http\Controllers\UserController::class, 'login']);
 
 Route::middleware(\App\Http\Middleware\ApiAuthMiddleware::class)->group(function () {
     Route::get('users/profile', [\App\Http\Controllers\UserController::class, 'profile']);
+    Route::delete('logout', [\App\Http\Controllers\UserController::class, 'logout']);
 
     Route::get('projects', [\App\Http\Controllers\ProjectController::class, 'search']);
     Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store']);

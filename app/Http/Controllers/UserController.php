@@ -67,4 +67,17 @@ class UserController extends Controller
             'data' => new UserResource(Auth::user())
         ]);
     }
+
+    public function logout(Request $request): JsonResponse
+    {
+        $user = User::where('id',  Auth::user()->id)->first();
+        $user->token = null;
+        $user->save();
+
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout Berhasil'
+        ]);
+    }
 }
