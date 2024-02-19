@@ -24,4 +24,10 @@ Route::post('login', [\App\Http\Controllers\UserController::class, 'login']);
 
 Route::middleware(\App\Http\Middleware\ApiAuthMiddleware::class)->group(function () {
     Route::get('users/profile', [\App\Http\Controllers\UserController::class, 'profile']);
+
+    Route::get('projects', [\App\Http\Controllers\ProjectController::class, 'search']);
+    Route::post('projects', [\App\Http\Controllers\ProjectController::class, 'store']);
+    Route::get('projects/{id}', [\App\Http\Controllers\ProjectController::class, 'show']);
+    Route::put('projects/{id}', [\App\Http\Controllers\ProjectController::class, 'update']);
+    Route::delete('projects/{id}', [\App\Http\Controllers\ProjectController::class, 'destroy']);
 });
